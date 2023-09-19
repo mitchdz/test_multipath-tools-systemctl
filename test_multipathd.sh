@@ -81,6 +81,11 @@ test_states() {
     echo "service inactive && socket inactive"
 }
 
+package=$(dpkg -l multipath-tools | grep multipath-tools | awk '{print $3}')
+echo "Testing multipath-tools ${package}"
+echo "------"
+echo ""
+
 test_states restart_socket_then_service
 test_states restart_service_then_socket
 test_states start_socket_then_service
